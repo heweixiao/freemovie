@@ -14,7 +14,7 @@ router.get('/',ctx=> {
   ctx.body = fs.createReadStream( path.resolve(__dirname,'../v/dist/index.html'));
 })
 router.get('/youku-free-movie/:id', ctx => {
-  return aqySpider(ctx.params.id).then(res=> {
+  return youkuSpider(ctx.params.id).then(res=> {
     ctx.response.type = 'json';
     console.log(res);
     ctx.body = res;
