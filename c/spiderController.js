@@ -25,16 +25,16 @@ const youkuSpider = (id)=> {
 const aqySpider = (id)=> {
   return new  Promise( function(resolve,reject) {
     request(`https://list.iqiyi.com/www/1/----------0---11-${id}-1-iqiyi--.html`, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode == 200) {
         const $ = cheerio.load(body);
         let array = [];
-        $('.site-piclist li').each(function(i,item) {
+        $('.qy-mod-ul li').each(function(i,item) {
           let obj = {};
           obj.id = i;
-          obj.title = $(this).find('.site-piclist_info_title').text();
-          obj.link =  $(this).find('.site-piclist_info_title a').attr('href');
-          obj.desc = $(this).find('.role_info').text();
-          obj.img = $(this).find('.site-piclist_pic img').attr('src');
+          obj.title = $(this).find('.title-wrap .link-txt').text();
+          obj.link =  $(this).find('.qy-mod-link').attr('href');
+          obj.desc = $(this).find('.title-wrap .sub').text();
+          // obj.img = $(this).find('.randomPopIn').css("backgroundImage");
           array.push(obj);
         });
         resolve(array);

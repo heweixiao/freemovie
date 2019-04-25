@@ -1,6 +1,6 @@
 <template>
 <div>
-   <h2 class="title">优酷电影大全</h2>
+   <h2 class="title">电影大全</h2>
    <ul class="movie">
       <li class="movie-item" v-for="item in data" v-key="item.id" @click="toDetail(item.link)">
           <img class="item-img" :src="item.img" alt="">

@@ -13,8 +13,13 @@ router.get('/',ctx=> {
   ctx.response.type = 'html';
   ctx.body = fs.createReadStream( path.resolve(__dirname,'../v/dist/index.html'));
 })
+//github hook监听
+router.post('/githubhook', ctx => {
+  console.log(ctx);
+  ctx.body = 'test'
+})
 router.get('/youku-free-movie/:id', ctx => {
-  return youkuSpider(ctx.params.id).then(res=> {
+  return aqySpider(ctx.params.id).then(res=> {
     ctx.response.type = 'json';
     console.log(res);
     ctx.body = res;
